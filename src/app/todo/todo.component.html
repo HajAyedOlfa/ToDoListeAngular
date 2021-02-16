@@ -1,0 +1,43 @@
+<div class="todos theme-cyan wrapper">
+    <div class="card col-md-6 col-sm-6">
+        <div class="header">
+            <h2>ToDo List <small>This Month task list</small></h2>
+        </div>
+        <form>
+            <div class="input-group mb-3">
+                <input 
+                type="text" class="form-control" 
+                placeholder="To Do ..." aria-label="Recipient's username" 
+                aria-describedby="basic-addon2"
+                name="inputTodo"
+                [(ngModel)]="inputTodo"
+                />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary icon-action-undo" (click)="addTodo()"></button>
+                </div>
+            </div>
+        </form>
+
+        <div *ngFor="let todo of todos; let i = index;" 
+            class="todo {{ (todo.completed ? 'done' : '') }}">
+
+            <div class="body todo_list">
+                <ul class="list-unstyled">
+                    <li>
+                        <label class="fancy-checkbox mb-0">
+                            <input type="checkbox" name="checkbox" >
+                            <span>{{ i }} . {{ todo.content }}</span>
+                        </label>    
+                            <p class="float-md-right"><button type="button" class="btn btn-danger icon-trash" 
+                                title="Delete" (click)="deleteTodo(i)"></button></p>
+                        
+                       
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
